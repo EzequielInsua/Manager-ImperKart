@@ -1,0 +1,41 @@
+// ----------------------------------
+// --- Creamos todas las Variable ---
+// ----------------------------------
+
+$colorPrincipal: rgb(255, 0, 47);
+$colorSecundario: rgb(77,77,77);
+$ColorTerciario: rgb(10, 10, 10);
+$ColorTexto: #fffbed;
+$bg: rgb(22, 22, 22);
+$bgCabecera:rgba(10, 10, 10, 0.5);
+$bgSeccion: rgb(22, 22, 22);
+$border:.05rem solid rgba(255, 255, 255, 0.1);
+$box-shadow:0 0 100px 0 rgba(255, 255, 255,.1);
+$tarjeta_falo: rgb(35,31,32);
+$SB_vel_general: all 0.5s ease;
+$SB_vel_cierre: all 0.2s ease;
+$SB_vel_apertura: all 0.8s ease;
+
+@font-face {
+    font-family: rocket;
+    src: url('../font/redrocketital.ttf');
+}
+@font-face {
+    font-family: rocketout;
+    src: url('../font/redrocket3dital.ttf');
+}
+@font-face {
+    font-family: guitaluevo;
+    src: url('../font/Gitaluevo.ttf');
+}
+@font-face {
+    font-family: monserrat_bold;
+    src: url('../font/Montserrat-Bold.ttf');
+}
+
+$fuentes:(
+    fontTitulo:('guitaluevo','Roboto', sans-serif),
+    fontGeneral:('Roboto', sans-serif),
+    fontAntiguo:('rocketout','Roboto'),
+    fontPromo:('monserrat_bold','Roboto')
+);

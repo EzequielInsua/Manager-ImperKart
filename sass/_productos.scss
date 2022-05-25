@@ -1,0 +1,90 @@
+// ---------------------------------
+// --- Estilos de Productos --------
+// ---------------------------------
+.productos{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 100px;
+    &__categoria{
+        width: 25%;
+        min-width: 270px;
+        margin-right: 50px;
+        box-shadow: $box-shadow;
+        padding: 15px 10px 15px 10px;
+        border-radius: 20px;
+        margin-bottom: 100px;
+        backdrop-filter: blur(0.2rem);
+        background-color: rgba(255, 255, 255, 0.099);
+        border: .1rem solid rgba(255,255,255, 0.2);
+        box-shadow: 0 1rem 1rem rgba(120, 62, 72, 0.2);
+        h3{
+            font-size: 2rem;
+            padding: 1rem;
+            text-transform: uppercase;
+            font-weight:bold;
+        }
+        .dropdown-item{
+            color: rgb(221, 221, 221);
+            border-radius: 250px;
+            background-color: transparent;
+            &:hover{
+                background-color: $colorPrincipal;
+                color: #fff;
+                border-radius: 250px;
+            }
+        }
+        #navbarDropdown{
+            color: rgb(150, 150, 150);
+            padding-top: 5px;
+            padding-bottom: 5px;
+            position: relative;
+            &:hover{
+                color: rgb(255, 255, 255);
+                background-color: $colorPrincipal;
+                border-radius: 250px;
+            }
+            &:focus{
+                color: rgb(255, 255, 255);
+                background-color: $colorPrincipal;
+                border-radius: 250px;
+            }
+        }
+        #menu__categ{
+            position: static !important;
+            transform: none !important;
+            border-radius: 20px;
+            margin-left: 20px;
+            backdrop-filter: blur(0.2rem);
+            background-color: rgba(57, 57, 57, 0.06);
+            border: .1rem solid rgba(255,255,255, 0.2);
+            box-shadow: 0 1rem 1rem rgba(120, 62, 72, 0.2);
+        }
+    }
+    &__tarjetas{
+        width: 75%;
+        .productos__listado{
+        &-h2{
+            grid-column-start: 1;
+            grid-column-end: 7;
+        }
+        &-estructura{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+            gap:1rem;
+            // align-items:flex-start;
+            // margin-bottom: 50px;
+            // text-align: center;
+            // align-items: center;
+            // justify-content: center;
+            }
+        }
+    }
+}
+.btn{
+    @include boton($colorPrincipal,$ColorTexto);
+    margin-bottom: 100px;
+}
+#pt-index{
+    width: 100%;
+}

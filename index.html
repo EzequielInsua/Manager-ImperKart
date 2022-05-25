@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&family=Poppins:wght@400;900&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sidebar active" id="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <img class="cabecera__logo-img" src="./img/logo/k_logo_vertical_fondo_transparente.png" width="30" alt="Logo Imper Kart">
+                <h1 id="logo_name">Imper Kart</h1>
+            </div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="#">
+                    <i class='bx bx-search-alt-2' id="buscar"></i>
+                    <input type="text" placeholder="Buscar...">
+                    <span class="tooltip">Buscar</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-dashboard' ></i>
+                    <span class="links_name">Dashboard</span>
+                    <span class="tooltip">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-pie-chart-alt-2' ></i>
+                    <span class="links_name">Analytics</span>
+                    <span class="tooltip">Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Usuario</span>
+                    <span class="tooltip">Usuario</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-user-account'></i>
+                    <span class="links_name">Cuentas</span>
+                    <span class="tooltip">Cuentas</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-chat'></i>
+                    <span class="links_name">Mensajes</span>
+                    <span class="tooltip">Mensajes</span>
+                </a>
+            </li>
+            <li>
+                <a id="activo" href="#">
+                    <i class='bx bxl-product-hunt'></i>
+                    <span class="links_name">Crear Productos</span>
+                    <span class="tooltip">Crear Productos</span>
+                </a>
+            </li>
+            <li>
+                <a href="./html/listproductos.html">
+                    <i class='bx bxl-product-hunt'></i>
+                    <span class="links_name">Listado Productos</span>
+                    <span class="tooltip">Listado Productos</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cart-alt'></i>
+                    <span class="links_name">Ordenes</span>
+                    <span class="tooltip">Ordenes</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Configuración</span>
+                    <span class="tooltip">Configuración</span>
+                </a>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <div class="name_job">
+                        <div class="name">Franco chunli</div>
+                        <div class="job">Gerente</div>
+                    </div>
+                    <i class="bx bx-log-out" id="log_out"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home_content">
+        <section class="creaProducto">
+            <!-- agregar la direccion al archivo donde se guardará la informacion del formulario -->
+            <fieldset class="fieldset card border-dark">
+                <legend class="creaProducto__legend card-header2"><h3>Crear nuevo producto</h3></legend>
+                    <form action="#" id="creaProducto__form">
+                        <div>
+                            <label for="categoriaProducto">Categoría</label>
+                            <select name="Color" id="categoriaProducto">
+                                <option disabled selected="">Selecione una Categoría</option>
+                                <option value="Carroceria">Carrocería</option>
+                                <option value="frenos">Frenos</option>
+                                <option value="llantas">Llantas</option>
+                                <option value="motor">Motor</option>
+                                <option value="neumaticos">Neumaticos</option>
+                                <option value="combustible">Combustible</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="nombreProducto">Nombre</label>
+                            <input type="text" placeholder="Nombre Producto" id="nombreProducto">
+                        </div>
+                        <div>
+                            <label for="modeloProducto">Modelo</label>
+                            <input type="number" placeholder="Modelo" id="modeloProducto" value="2022">
+                        </div>
+                        <div>
+                            <label for="colorProducto">Color</label>
+                            <select name="Color" id="colorProducto">
+                                <option disabled selected="">Selecione un color</option>
+                                <option value="blanco">Blanco</option>
+                                <option value="negro">Negro</option>
+                                <option value="rojo">Rojo</option>
+                                <option value="azul">Azul</option>
+                                <option value="gris">Gris</option>
+                                <option value="dorado">Dorado</option>
+                                <option value="plateado">Plateado</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="precioProducto">Precio</label>
+                            <input type="number" placeholder="Precio" id="precioProducto">
+                        </div>
+                        <div>
+                            <label for="cantidadProducto">Cantidad</label>
+                            <input type="number" placeholder="Modelo" id="cantidadProducto" value="20">
+                        </div>
+                        <div>
+                            <label for="ImgProducto">Imagen del Producto</label>
+                            <input type="file" accept="image" id="imagenProducto" class="fila">
+                        </div>
+                        <div class="fila">
+                            <button id="btncreaProducto" type="submit">Guardar Producto</button>
+                        </div>
+                    </form>
+            </fieldset>
+            <div id="ListaProdCreados"></div>
+        </section>
+    </div>
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

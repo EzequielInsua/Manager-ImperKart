@@ -1,0 +1,251 @@
+/* ***********************************************************************************
+Slidebar
+*********************************************************************************** */
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 78px;
+    background: #282828;
+    padding: 6px 14px;
+    border-radius: 10px;
+    transition: $SB_vel_general;
+    z-index: 1000;
+    .logo_content {
+        .logo{
+            color:$ColorTexto;
+            display: flex;
+            height: 50px;
+            width: 100%;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition:$SB_vel_cierre;
+            #logo_name{
+                font-size: 20px;
+                font-weight:400;
+                margin: 0 0 0 15px;
+                padding: 0;
+            }
+        }
+        #btn{
+            position: absolute;
+            color: $ColorTexto;
+            left: 50%;
+            top:6px;
+            font-size: 20px;
+            height:  50px;
+            width: 50px;
+            text-align: center;
+            line-height:  50px;
+            transform: translateX(-50%);
+        }
+        i{
+            font-size: 28px;
+            margin-right: 5px;
+        }
+    }
+    .nav_list{
+        padding-left: 0%;
+        margin-top: 20px;
+        li{
+            position: relative;
+            height:  50px;
+            width: 100%;
+            margin: 0 5px;
+            list-style: none;
+            line-height: 50px;
+            a{
+                color: $ColorTexto;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                transition: all 0.2s ease;
+                border-radius: 10px;
+                white-space: nowrap;
+                i{
+                    height: 50px;
+                    min-width: 50px;
+                    border-radius: 12px;
+                    line-height: 50px;
+                    text-align: center;
+                }
+                .bx-search-alt-2{
+                    position: relative;
+                    z-index: 99;
+                    color: $ColorTexto;
+                    font-size: 22px;
+                    transition: $SB_vel_general;
+                }
+                input{
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                    border-radius: 10px;
+                    outline: none;
+                    border: none;
+                    background-color: #a8a8a8;
+                    padding-left: 50px;
+                    font-size: 18px;
+                    color: #000;
+                }
+                .links_name{
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: $SB_vel_cierre;
+                }
+                .tooltip{
+                    position: absolute;
+                    left: 122px;
+                    top:0;    
+                    transform: translate(-50%,-50%);
+                    border-radius: 6px;
+                    height: 35px;
+                    width: 122px;
+                    background: $ColorTexto;
+                    color: $ColorTerciario;
+                    line-height: 35px;
+                    text-align: center;
+                    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+                    transition: 0s;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: $SB_vel_cierre;
+                }
+                &:hover{
+                    border: $border;
+                    box-shadow: $box-shadow;
+                    background: $colorSecundario;
+                }
+            }
+            &:hover .tooltip{
+                transition: $SB_vel_general;
+                opacity: 1;
+                top:50%;
+            }
+            #activo{
+                color: $ColorTerciario;
+                background:  $colorPrincipal;
+            }
+        }
+    }
+    .profile_content{
+        position: absolute;
+        color: $ColorTexto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        .profile{
+            position: relative;
+            padding: 10px 6px;
+            height: 60px;
+            background: #383838;
+            .profile_details{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                opacity: 0;
+                pointer-events: none;
+                white-space: nowrap;
+                .name_job{
+                    margin-left: 10px;
+                    .name{
+                        font-size: 15px;
+                        font-weight: 400;
+                    }
+                    .job{
+                        font-size: 12px;
+                        font-weight: 400;
+                    }
+                }
+                #log_out{
+                    position: absolute;
+                    left: 50%;
+                    bottom:5px;
+                    transform: translateX(-50%);
+                    min-width: 50px;
+                    line-height: 50px;
+                    font-size:20px;
+                    border-radius: 20px;
+                    opacity: 0;
+                    pointer-events: none;
+                    text-align: center;
+                    transition: $SB_vel_cierre;
+                }
+            }
+        }
+    }
+}
+
+.sidebar.active{
+    width: 240px;
+    .logo_content{
+        .logo{
+            opacity: 1;
+            transition: $SB_vel_apertura;
+        }
+        #btn{
+            left: 90%;
+        }
+    }
+    .nav_list{
+        li{
+            .tooltip{
+                display: none;
+            }
+            &:hover .tooltip{
+                transition: $SB_vel_general;
+                opacity: 0;
+                top:50%;
+            }
+            a{
+                .bx-search-alt-2{
+                    :hover{
+                    background: $ColorTexto;
+                    color: #a8a8a8;
+                    }
+                }
+                .links_name{
+                    opacity: 1;
+                    pointer-events: auto;
+                    transition: $SB_vel_apertura;
+                }
+            }
+            
+        }
+    }
+    .profile_content{
+        .profile{
+            .profile_details{
+                opacity: 1;
+                pointer-events: auto;
+                transition: $SB_vel_apertura;
+                #log_out{
+                    left: 88%;
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+            }
+        }
+    }
+}
+
+.home_content{
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 78px);
+    left: 78px;
+    transition: $SB_vel_general;
+    .text{
+        margin-left: 12px;
+    }
+}
+
+.sidebar.active ~ .home_content{
+    width: calc(100% - 240px);
+    left: 240px;
+}

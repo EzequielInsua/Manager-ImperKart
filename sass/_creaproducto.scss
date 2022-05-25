@@ -1,0 +1,136 @@
+.creaProducto{
+    width: 100%;
+    margin-top: 78px;
+
+}
+.creaProducto__legend{
+    color:$colorPrincipal;
+    text-align: center;
+    padding-top: 10px;
+    background: rgb(105, 84, 84);
+}
+#listado__productos{
+    width: 100%;
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 400px));
+    gap:1rem;
+}
+.tarjeta{
+    border-radius: 20px;
+    text-align: center;
+    width: 240px;
+    height: 450px;
+    backdrop-filter: blur(0.2rem);
+    background-color: rgba(255, 255, 255, 0.099);
+    border: .1rem solid rgba(255,255,255, 0.2);
+    box-shadow: 0 1rem 1rem rgba(120, 62, 72, 0.2);
+    }
+.PCuotas{
+    color:antiquewhite;
+    backdrop-filter: blur(0.2rem);
+    background-color: rgba(255, 255, 255, 0.099);
+    border: .1rem solid rgba(255,255,255, 0.2);
+    box-shadow: 0 1rem 1rem rgba(120, 62, 72, 0.2);
+}
+
+/* .creaProducto{
+    display: flex;
+} */
+
+legend {
+    font-size: 2rem;
+    text-transform: uppercase;
+    background: $colorSecundario;
+}
+
+fieldset {
+    box-shadow: 0 0 100px 0 rgba(255, 255, 255, 0.1);
+    width: 90%;
+    margin-right: 3%;
+    border-radius: 10px; 
+    margin: auto;
+    padding: auto;
+}
+
+#creaProducto__form > * {
+    padding: 1rem; 
+}
+
+#creaProducto__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+}
+
+.fila {
+    grid-column: 1 / 3; 
+}
+
+#creaProducto__form div {
+    margin: 0;
+    padding: 1rem 2rem 1rem 2rem; 
+}
+
+#creaProducto__form input,
+#creaProducto__form button,
+#creaProducto__form textarea,
+#creaProducto__form select {
+    width: 100%;
+    color: rgb(187, 187, 187);
+    padding: .7rem;
+    border: none;
+    background: none;
+    resize: none;
+    border-bottom: 1px solid $colorPrincipal; 
+}
+#creaProducto__form label{
+    color: #fff;
+    text-align: left;
+}
+#creaProducto__form button {
+    background: $colorPrincipal;
+    border: 0;
+    color:$ColorTexto;
+    text-transform: uppercase;
+    padding: 1rem;
+    border-radius: 10px; 
+}
+#colorProducto option,
+#categoriaProducto option{
+    color: #000;
+}
+
+#creaProducto__form button:hover,
+#creaProducto__form button:focus {
+    background-color: #d63031;
+    color: black; 
+}
+
+.ProdCreados{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+}
+.listadoTarjeta{
+    width: 100%;
+    height: 70px;
+    color:antiquewhite;
+    backdrop-filter: blur(0.2rem);
+    background-color: rgba(255, 255, 255, 0.099);
+    border: .1rem solid rgba(255,255,255, 0.2);
+    box-shadow: 0 1rem 1rem rgba(120, 62, 72, 0.2);
+    border-radius: 10px;
+    padding:5px 15px 5px 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#btnborrarProducto {
+    background: #ff002f;
+    border: 0;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    border-radius: 10px; 
+}
