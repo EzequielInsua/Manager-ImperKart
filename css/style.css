@@ -407,7 +407,7 @@ fieldset {
 .tarjeta {
   border-radius: 20px;
   transition: all .3s;
-  min-width: 240px;
+  min-width: 280px;
   height: 450px;
   margin-bottom: 50px; }
   .tarjeta:hover {
@@ -415,7 +415,7 @@ fieldset {
   .tarjeta .tarjeta2 {
     border-radius: 20px;
     text-align: center;
-    min-width: 240px;
+    min-width: 280px;
     height: 450px;
     backdrop-filter: blur(0.2rem);
     background-color: rgba(255, 255, 255, 0.099);
@@ -445,13 +445,14 @@ fieldset {
       border-radius: 20px; }
     .tarjeta .tarjeta2 .d-block {
       object-fit: scale-down;
-      height: 12rem; }
+      height: 15rem; }
     .tarjeta .tarjeta2 .carousel-item .tarjeta__descripcion {
       color: #161616; }
       .tarjeta .tarjeta2 .carousel-item .tarjeta__descripcion h2 {
         font-weight: 600;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         letter-spacing: 3px;
+        height: 30px;
         text-transform: uppercase;
         color: #ff002f;
         margin: auto;

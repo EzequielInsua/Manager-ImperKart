@@ -1,6 +1,8 @@
 // ***************************************************************************************************
-// En este sector creamos las tarjetas con las fotos de los productos y las insertamos en el html.
+// Creamos los productos con las fotos de los productos y las insertamos en el html.
 // ***************************************************************************************************
+
+// Creamos los productos una vez que el usuario llenó el formulario e hizo click en el bonton GUARDAR PRODUCTO.
 
 class Producto {
     constructor(id,nombre,modelo,color,precio,categoria,cantidad,imagenURL){
@@ -16,11 +18,11 @@ class Producto {
 };
 
 
-// Creamos los productos una vez que el usuario llenó el formulario e hizo click en el bonton GUARDAR PRODUCTO.
+// Variable donde tenemos precargados productos y vamos a guardar los productos anteriores.
 let productosGuardar = [
     { "cantidad": 20, "categoria": "Llantas", "color": "negro", "id": 1, "imagenURL": "../img/llantas/Llanta_trasera_8.png", "modelo": 2020, "nombre": "Llantas Trasera 8", "precio": 9000 },
-    { "cantidad": 20, "categoria": "Carrocería", "color": "Rojo", "id": 2, "imagenURL": "../img/trompa/trompa_tierra_2015_roja.png", "modelo": 2022, "nombre": "Trompa", "precio": 4500},
-    { "cantidad": 20, "categoria": "Carrocería", "color": "Blanca", "id": 3, "imagenURL": "../img/trompa/trompa_tierra_2015_blanca.png", "modelo": 2022, "nombre": "Trompa", "precio": 5000},
+    { "cantidad": 20, "categoria": "Carrocería", "color": "rojo", "id": 2, "imagenURL": "../img/trompa/trompa_tierra_2015_roja.png", "modelo": 2022, "nombre": "Trompa", "precio": 4500},
+    { "cantidad": 20, "categoria": "Carrocería", "color": "blanco", "id": 3, "imagenURL": "../img/trompa/trompa_tierra_2015_blanca.png", "modelo": 2022, "nombre": "Trompa", "precio": 5000},
     { "cantidad": 20, "categoria": "Carrocería", "color": "negro", "id": 4, "imagenURL": "../img/corbata/corbata_2014_negro.png", "modelo": 2021, "nombre": "Corbata", "precio": 4000},
     { "cantidad": 20, "categoria": "llantas", "color": "negro", "id": 5, "imagenURL": "../img/llantas/Llanta_delantera_5.png", "modelo": 2021, "nombre": "Llantas Delantera 5", "precio": 8000}
 ];
@@ -46,23 +48,17 @@ class UI {
                                 <div><strong>Cantidad: </strong>${cantidad}</div>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" id="${id}" name="borrar"></button>`;
         ProductosHTML.appendChild(contenedor);
-        contenedor = contenedor.setAttribute("class","alert alert-dismissible alert-light ProdCreados");
+        contenedor.setAttribute("class","alert alert-dismissible alert-light ProdCreados");
+        contenedor.addEventListener('click', function(e){
+            console.log(e.target);
+            const ui = new UI();
+            ui.borrarProducto(e.target);
+            }
+        )
     }
     crearListado(){
         listaProductosG.forEach(element => {
-            const {id,nombre,modelo,color,precio,cantidad,categoria,imagenURL} = element;
-            let contenedor = document.createElement("div");
-            contenedor.innerHTML = `<image src="${imagenURL}" alt="${nombre}" width=100></image>
-                                    <div><strong>ID: </strong>${id}</div>
-                                    <div><strong>Categoría: </strong>${categoria}</div>
-                                    <div><strong>Nombre: </strong>${nombre}</div>
-                                    <div><strong>Modelo: </strong>${modelo}</div>
-                                    <div><strong>Color: </strong>${color}</div>
-                                    <div><strong>Precio: </strong>${precio}</div>
-                                    <div><strong>Cantidad: </strong>${cantidad}</div>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" id="${id}" name="borrar"></button>`;
-            ListaProdHTML.appendChild(contenedor);
-            contenedor = contenedor.setAttribute("class","alert alert-dismissible alert-light ProdCreados");
+            this.crearProducto(element);
             }
         )
     };
@@ -72,7 +68,7 @@ class UI {
             let contenedor = document.createElement("div");
             contenedor.innerHTML = `<div class="tarjeta">
                                         <div class="tarjeta2">
-                                            <div id="${id}" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                            <div  class="carousel carousel-dark slide" data-bs-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
                                                         <img src="${imagenURL}" class="d-block w-100" alt="${nombre}">
@@ -84,9 +80,9 @@ class UI {
                                                             </div>
                                                             <div class="color">
                                                                 <h3>Color:</h3>
-                                                                <span class="${color} activo"></span>
+                                                                <span class="${color}"></span>
                                                             </div>
-                                                            <a id = "comprar" href="#">Comprar</a>
+                                                            <a id="${id}" class="comprar" href="#">Comprar</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -97,18 +93,42 @@ class UI {
             // contenedor = contenedor.setAttribute("class","alert alert-dismissible alert-light ProdCreados");
             }
         );
+    
     };
+    
 
     resetearFormulario(){
         document.getElementById('creaProducto__form').reset();
     }
     borrarProducto(contenedor){
         if (contenedor.name == "borrar"){
-            contenedor.parentElement.remove()
-        }
+            swal({
+                title: "¿Estás seguro?",
+                text: "¡Una vez eliminado, no podrás recuperar este Producto!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                swal(`Poof! ¡Tu Producto ha sido eliminado!`, {
+                icon: "success",
+                }
+            );
+            let productos = JSON.parse(localStorage.getItem("listaProductos"));
+            let itemIndex = productos.findIndex( e => e.id === contenedor.id);
+            productos.splice(itemIndex , 1);
+            localStorage.setItem("listaProductos",JSON.stringify(productos));
+            contenedor.parentElement.remove();
+            } else {
+                swal(`¡Tu Producto está a salvo!`);
+            }
+            });
+            
             // let productos = JSON.parse(localStorage.getItem("listaProductos"));
             // delete productos[contenedor.id];
-            // localStorage.setItem("listaProductos",JSON.stringify(productos));
+
+        }
     }
     mostrarMensaje(mensaje,classCSS){
         const divMensaje = document.createElement('div');
@@ -126,8 +146,6 @@ class UI {
     // procesarImagen(file){
     //     const docType = file.type;
     //     const validarExtension = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
-
-    //     validarExtension.includes(docType) ?  : mostrarMensaje('¡No ingresó una imagen!','primary')
     // }
 }
 
@@ -149,24 +167,20 @@ function CapturaDeForm (){
             
             // convertimos el archivo de imagen en una URL
             let imagenURL = "";
-            
             archivoPATH && (imagenURL = URL.createObjectURL(archivoPATH));
 
             // utilizamos la interfaz de usuario para agregar los productos a la pantalla o mostrar mensajes.
             const ui = new UI();
-
             if( !nombre  || !modelo || !color || !precio || !categoria || !cantidad ){
-                return ui.mostrarMensaje('¡Completa todos los campos!','primary')
+                // return ui.mostrarMensaje('¡Completa todos los campos!','primary');
+                return swal("¡Lo siento!", "¡Completa todos los campos, por favor!", "error");
             }
             // Creamos los objetos y los guardamos en un arreglo
             const productos = new Producto(id,nombre,modelo,color,precio,categoria,cantidad,imagenURL);
             productosGuardar.push(productos);
-
             localStorage.setItem("listaProductos",JSON.stringify(productosGuardar));
-
             ui.crearProducto(productos);
-
-            ui.mostrarMensaje('¡Producto agregado correctamente!','success');
+            swal("¡Gran Trabajo!", "El producto se guardó correctamente!", "success");
             
             // Enviamos a resetar el formulario, por ahora no lo uso porque me interesa que no lo haga.
             // ui.resetearFormulario(); 
@@ -189,15 +203,11 @@ mostrarProductoHTML && new UI().crearTarjeta();
 
 
 // Eliminamos los productos al hacer click en el boton borrar
-const ProdCreados = document.getElementById('ListaProdCreados')
-function borrarLista(){
-    ProdCreados.addEventListener('click', function(e){
-        console.log(e.target);
-        const ui = new UI();
-        ui.borrarProducto(e.target);
-        ui.mostrarMensaje('¡Producto fue eliminado correctamente!','info');
-        }
-    )
-}
+// const ProdCreados = document.getElementById('ListaProdCreados')
+// function borrarLista(){
 
-ProdCreados && borrarLista();
+// }
+
+// ProdCreados && borrarLista();
+
+
