@@ -19,15 +19,25 @@ class Producto {
 
 
 // Variable donde tenemos precargados productos y vamos a guardar los productos anteriores.
-let productosGuardar = [
-    { "cantidad": 20, "categoria": "Llantas", "color": "negro", "id": 1, "imagenURL": "../img/llantas/Llanta_trasera_8.png", "modelo": 2020, "nombre": "Llantas Trasera 8", "precio": 9000 },
-    { "cantidad": 20, "categoria": "Carrocería", "color": "rojo", "id": 2, "imagenURL": "../img/trompa/trompa_tierra_2015_roja.png", "modelo": 2022, "nombre": "Trompa", "precio": 4500},
-    { "cantidad": 20, "categoria": "Carrocería", "color": "blanco", "id": 3, "imagenURL": "../img/trompa/trompa_tierra_2015_blanca.png", "modelo": 2022, "nombre": "Trompa", "precio": 5000},
-    { "cantidad": 20, "categoria": "Carrocería", "color": "negro", "id": 4, "imagenURL": "../img/corbata/corbata_2014_negro.png", "modelo": 2021, "nombre": "Corbata", "precio": 4000},
-    { "cantidad": 20, "categoria": "llantas", "color": "negro", "id": 5, "imagenURL": "../img/llantas/Llanta_delantera_5.png", "modelo": 2021, "nombre": "Llantas Delantera 5", "precio": 8000}
-];
+document.addEventListener('DOMContentLoaded', () => {
+    traerDatosJson();
+})
+let productosGuardar;
+let listaProductosG;
+const traerDatosJson = async () =>{
+    let response = await fetch("../json/api.json");
+    let data = await response.json();
+    productosGuardar = data;
+    localStorage.setItem("listaProductos",JSON.stringify(productosGuardar));
+    listaProductosG = JSON.parse(localStorage.getItem("listaProductos"));
+    
+    const ListaProdHTML = document.getElementById('ListaProd');
+    ListaProdHTML && new UI().crearListado(listaProductosG);
 
+    const mostrarProductoHTML = document.getElementById('estructura_prod');
+    mostrarProductoHTML && new UI().crearTarjeta(listaProductosG);
 
+}
 
 // *****************************************************************************************************
 // En la interfas de usuario creamos las funciones para crear producto, borrarlo, mostrar alertas, etc.
@@ -49,21 +59,24 @@ class UI {
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" id="${id}" name="borrar"></button>`;
         ProductosHTML.appendChild(contenedor);
         contenedor.setAttribute("class","alert alert-dismissible alert-light ProdCreados");
+
         contenedor.addEventListener('click', function(e){
-            console.log(e.target);
             const ui = new UI();
             ui.borrarProducto(e.target);
             }
         )
     }
-    crearListado(){
-        listaProductosG.forEach(element => {
+    crearListado(data){
+        console.log(data);
+        data.forEach(element => {
             this.crearProducto(element);
             }
         )
     };
-    crearTarjeta(){
-        listaProductosG.forEach(element => {
+    crearTarjeta(data){
+        console.log(data);
+        const mostrarProductoHTML = document.getElementById('estructura_prod');
+        data.forEach(element => {
             const {id,nombre,modelo,color,precio,cantidad,categoria,imagenURL} = element;
             let contenedor = document.createElement("div");
             contenedor.innerHTML = `<div class="tarjeta">
@@ -116,9 +129,10 @@ class UI {
                 }
             );
             let productos = JSON.parse(localStorage.getItem("listaProductos"));
-            let itemIndex = productos.findIndex( e => e.id === contenedor.id);
+            let itemIndex = productos.findIndex( e => e.id == contenedor.id);
             productos.splice(itemIndex , 1);
             localStorage.setItem("listaProductos",JSON.stringify(productos));
+
             contenedor.parentElement.remove();
             } else {
                 swal(`¡Tu Producto está a salvo!`);
@@ -130,18 +144,6 @@ class UI {
 
         }
     }
-    mostrarMensaje(mensaje,classCSS){
-        const divMensaje = document.createElement('div');
-        divMensaje.setAttribute("class",`alert alert-dismissible alert-${classCSS}`);
-        divMensaje.appendChild(document.createTextNode(mensaje));
-        // Para mostrar en pantalla
-        const contMensaje = document.querySelector('.creaProducto');
-        const fieldset = document.querySelector('.fieldset');
-        contMensaje.insertBefore(divMensaje, fieldset);
-        setTimeout(function (){
-            document.querySelector('.alert').remove()
-        },3000);
-    }
 
     // procesarImagen(file){
     //     const docType = file.type;
@@ -152,8 +154,6 @@ class UI {
 // *****************************************************************************************************
 // Capturamos los elementos desde el document y llamamos a UI para responder al usuario.
 // *****************************************************************************************************
-let listaProductosG = JSON.parse(localStorage.getItem("listaProductos"));
-
 function CapturaDeForm (){
         formularioCaptura.addEventListener('submit', function(e){
             const id = productosGuardar.length + 1;
@@ -164,22 +164,19 @@ function CapturaDeForm (){
             const categoria = document.getElementById('categoriaProducto').value;
             const cantidad = document.getElementById('cantidadProducto').value;
             const [archivoPATH] = document.getElementById('imagenProducto').files;
-            
             // convertimos el archivo de imagen en una URL
             let imagenURL = "";
             archivoPATH && (imagenURL = URL.createObjectURL(archivoPATH));
-
             // utilizamos la interfaz de usuario para agregar los productos a la pantalla o mostrar mensajes.
             const ui = new UI();
             if( !nombre  || !modelo || !color || !precio || !categoria || !cantidad ){
-                // return ui.mostrarMensaje('¡Completa todos los campos!','primary');
                 return swal("¡Lo siento!", "¡Completa todos los campos, por favor!", "error");
             }
             // Creamos los objetos y los guardamos en un arreglo
             const productos = new Producto(id,nombre,modelo,color,precio,categoria,cantidad,imagenURL);
-            productosGuardar.push(productos);
-            localStorage.setItem("listaProductos",JSON.stringify(productosGuardar));
             ui.crearProducto(productos);
+            productosGuardar.push(productos);
+            localStorage.getItem("listaProductos",JSON.stringify(productosGuardar));
             swal("¡Gran Trabajo!", "El producto se guardó correctamente!", "success");
             
             // Enviamos a resetar el formulario, por ahora no lo uso porque me interesa que no lo haga.
@@ -191,23 +188,12 @@ function CapturaDeForm (){
 };
 // llamamo a la funcion CapturarDeForm
 const formularioCaptura = document.getElementById('creaProducto__form');
-formularioCaptura && CapturaDeForm ();
+formularioCaptura &&  CapturaDeForm ()
 
-// llamamo a la funcion crearProducto
-const ListaProdHTML = document.getElementById('ListaProd');
-ListaProdHTML && new UI().crearListado();
+// // llamamo a la funcion crearProducto
+// const ListaProdHTML = document.getElementById('ListaProd');
+// ListaProdHTML && new UI().crearListado()
 
-// llamamo a la funcion crearTarjeta
-let mostrarProductoHTML = document.getElementById('estructura_prod');
-mostrarProductoHTML && new UI().crearTarjeta();
-
-
-// Eliminamos los productos al hacer click en el boton borrar
-// const ProdCreados = document.getElementById('ListaProdCreados')
-// function borrarLista(){
-
-// }
-
-// ProdCreados && borrarLista();
-
-
+// // llamamo a la funcion crearTarjeta
+// let mostrarProductoHTML = document.getElementById('estructura_prod');
+// mostrarProductoHTML && new UI().crearTarjeta(productosGuardar);

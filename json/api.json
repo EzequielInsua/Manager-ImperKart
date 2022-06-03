@@ -1,0 +1,7 @@
+[
+    { "cantidad": 20, "categoria": "Llantas", "color": "negro", "id": 1, "imagenURL": "../img/llantas/Llanta_trasera_8.png", "modelo": 2020, "nombre": "Llantas Trasera 8", "precio": 9000 },
+    { "cantidad": 20, "categoria": "Carrocería", "color": "rojo", "id": 2, "imagenURL": "../img/trompa/trompa_tierra_2015_roja.png", "modelo": 2022, "nombre": "Trompa", "precio": 4500},
+    { "cantidad": 20, "categoria": "Carrocería", "color": "blanco", "id": 3, "imagenURL": "../img/trompa/trompa_tierra_2015_blanca.png", "modelo": 2022, "nombre": "Trompa", "precio": 5000},
+    { "cantidad": 20, "categoria": "Carrocería", "color": "negro", "id": 4, "imagenURL": "../img/corbata/corbata_2014_negro.png", "modelo": 2021, "nombre": "Corbata", "precio": 4000},
+    { "cantidad": 20, "categoria": "llantas", "color": "negro", "id": 5, "imagenURL": "../img/llantas/Llanta_delantera_5.png", "modelo": 2021, "nombre": "Llantas Delantera 5", "precio": 8000}
+]
