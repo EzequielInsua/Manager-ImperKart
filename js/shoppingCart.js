@@ -5,7 +5,6 @@ let search = document.querySelector("#search");
 
 class Card{
     productAdded(container){
-        e.preventDefault();
         if (container.name == "comprar"){
             swal(`¡El Producto fue agregado a tu lista de deseos!`);
             let productAddList = [];
