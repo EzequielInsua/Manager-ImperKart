@@ -3,10 +3,11 @@
 @import "variables.scss";
 
 // --- Importamos Secciones ---
+@import "header.scss";
 @import "generales.scss";
 @import "sidebar.scss";
 @import "boton.scss";
-@import "creaproducto.scss";
-@import "tablaproducto.scss";
-@import "tarjetas.scss";
+@import "productCreator.scss";
+@import "productTable.scss";
+@import "cards.scss";
 @import "productos.scss";

@@ -33,35 +33,35 @@
             <li>
                 <a href="#">
                     <i class='bx bxs-dashboard' ></i>
-                    <span class="links_name">Dashboard</span>
+                    <span class="links_name">Dashboard <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Dashboard</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-pie-chart-alt-2' ></i>
-                    <span class="links_name">Analytics</span>
+                    <span class="links_name">Analytics <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Analytics</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-user'></i>
-                    <span class="links_name">Usuario</span>
+                    <span class="links_name">Usuario <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Usuario</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bxs-user-account'></i>
-                    <span class="links_name">Cuentas</span>
+                    <span class="links_name">Cuentas <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Cuentas</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-chat'></i>
-                    <span class="links_name">Mensajes</span>
+                    <span class="links_name">Mensajes <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Mensajes</span>
                 </a>
             </li>
@@ -73,23 +73,30 @@
                 </a>
             </li>
             <li>
-                <a id="activo" href="#">
+                <a href="../html/productList.html" id="activo" >
                     <i class='bx bxl-product-hunt'></i>
                     <span class="links_name">Listado Productos</span>
                     <span class="tooltip">Listado Productos</span>
                 </a>
             </li>
             <li>
+                <a href="../html/product.html">
+                    <i class='bx bxl-product-hunt'></i>
+                    <span class="links_name">Vista Previa</span>
+                    <span class="tooltip">Vista Previa</span>
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <i class='bx bx-cart-alt'></i>
-                    <span class="links_name">Ordenes</span>
+                    <span class="links_name">Ordenes<span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Ordenes</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-cog'></i>
-                    <span class="links_name">Configuración</span>
+                    <span class="links_name">Configuración<span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Configuración</span>
                 </a>
             </li>
@@ -106,14 +113,32 @@
             </div>
         </div>
     </div>
-    <div class="home_content">
-        <div id="creaProducto__form"></div>
-        <div id="ListaProdCreados"></div>
-        <section>
-            <div id="ListaProd"></div>
-        </section>
-    </div>
+    <section class="home_content">
+        <div class="card border-light mb-8">
+            <div class="card-header">Lista de Productos</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                        <tbody id="tbody">
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </section>
     <script src="../js/sidebar.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/productGenerator.js"></script>
+    <script src="../js/userInterface.js"></script>
+    <script src="../js/execution.js"></script>
 </body>
 </html>

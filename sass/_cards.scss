@@ -1,4 +1,4 @@
-.tarjeta{
+.card_back{
     border-radius: 20px;
     transition: all .3s;
     min-width: 280px;
@@ -7,7 +7,7 @@
     &:hover {
         box-shadow: 0px 0px 40px 1px rgba(253, 0, 0, 0.616);
     }
-    .tarjeta2{
+    .card2{
         border-radius: 20px;
         text-align: center;
         min-width: 280px;
@@ -49,7 +49,7 @@
             height: 15rem;
         }
         .carousel-item{
-            .tarjeta__descripcion{
+            .cardDescription{
                 color: $bg;
                 h2{
                     font-weight: 600;
@@ -63,7 +63,7 @@
                     margin: 5px;
                     padding: 0;
                 }
-                .precio{
+                .price{
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -136,7 +136,7 @@
                     font-weight: 600;
                 }
             }
-            .tarjeta__iconos a{
+            .comprar a{
                 height: 2rem;
                 width: 2rem;
                 line-height: 2rem;

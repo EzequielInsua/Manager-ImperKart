@@ -1,12 +1,12 @@
 // ---------------------------------
 // --- Estilos de Productos --------
 // ---------------------------------
-.productos{
+.products{
     display: flex;
     width: 100%;
     justify-content: center;
     margin-bottom: 100px;
-    &__categoria{
+    &__category{
         width: 25%;
         min-width: 270px;
         margin-right: 50px;
@@ -61,17 +61,18 @@
             box-shadow: 0 1rem 1rem rgba(120, 62, 72, 0.2);
         }
     }
-    &__tarjetas{
+    .productCards{
         width: 75%;
-        .productos__listado{
+        .productList{
         &-h2{
             grid-column-start: 1;
             grid-column-end: 7;
         }
-        &-estructura{
+        &-Structure{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
             gap:1rem;
+            margin: 5%;
             // align-items:flex-start;
             // margin-bottom: 50px;
             // text-align: center;
@@ -88,3 +89,36 @@
 #pt-index{
     width: 100%;
 }
+#quantity{
+    color: rgb(245, 245, 245);
+    border-radius: 10px;
+    background-color: transparent;
+    &:hover{
+        background-color: $colorPrincipal;
+        color: #fff;
+        border-radius: 10px;
+    }
+    width: 50px;
+}
+#searchContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    height: 40px;
+    width: 100%!important;
+}
+#search{
+    width: 90%;
+    background-color: transparent;
+    border: $border;
+}
+.btn-outline-success{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.modal-content{
+    background-image: linear-gradient(125deg,rgba(83, 83, 83, 0.658),rgba(83, 83, 83,.8) 70%);
+}
+
+

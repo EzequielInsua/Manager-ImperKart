@@ -31,63 +31,70 @@
             <li>
                 <a href="#">
                     <i class='bx bxs-dashboard' ></i>
-                    <span class="links_name">Dashboard</span>
+                    <span class="links_name">Dashboard <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Dashboard</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-pie-chart-alt-2' ></i>
-                    <span class="links_name">Analytics</span>
+                    <span class="links_name">Analytics <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Analytics</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-user'></i>
-                    <span class="links_name">Usuario</span>
+                    <span class="links_name">Usuario <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Usuario</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bxs-user-account'></i>
-                    <span class="links_name">Cuentas</span>
+                    <span class="links_name">Cuentas <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Cuentas</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-chat'></i>
-                    <span class="links_name">Mensajes</span>
+                    <span class="links_name">Mensajes <span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Mensajes</span>
                 </a>
             </li>
             <li>
-                <a id="activo" href="#">
+                <a id="activo" href="./index.html">
                     <i class='bx bxl-product-hunt'></i>
                     <span class="links_name">Crear Productos</span>
                     <span class="tooltip">Crear Productos</span>
                 </a>
             </li>
             <li>
-                <a href="./html/listproductos.html">
+                <a href="./html/productList.html">
                     <i class='bx bxl-product-hunt'></i>
                     <span class="links_name">Listado Productos</span>
                     <span class="tooltip">Listado Productos</span>
                 </a>
             </li>
             <li>
+                <a href="./html/product.html">
+                    <i class='bx bxl-product-hunt'></i>
+                    <span class="links_name">Vista Previa</span>
+                    <span class="tooltip">Vista Previa</span>
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <i class='bx bx-cart-alt'></i>
-                    <span class="links_name">Ordenes</span>
+                    <span class="links_name">Ordenes<span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Ordenes</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-cog'></i>
-                    <span class="links_name">Configuración</span>
+                    <span class="links_name">Configuración<span class="badge badge-info">Prox!</span></span>
                     <span class="tooltip">Configuración</span>
                 </a>
             </li>
@@ -105,14 +112,14 @@
         </div>
     </div>
     <div class="home_content">
-        <section class="creaProducto">
+        <section class="productCreator">
             <!-- agregar la direccion al archivo donde se guardará la informacion del formulario -->
             <fieldset class="fieldset card border-dark">
-                <legend class="creaProducto__legend card-header2"><h3>Crear nuevo producto</h3></legend>
-                    <form action="#" id="creaProducto__form">
+                <legend class="card-header2"><h3>Crear nuevo producto</h3></legend>
+                    <form action="#" id="productCreator__form">
                         <div>
-                            <label for="categoriaProducto">Categoría</label>
-                            <select name="Color" id="categoriaProducto">
+                            <label for="productCategory">Categoría</label>
+                            <select name="Color" id="productCategory">
                                 <option disabled selected="">Selecione una Categoría</option>
                                 <option value="Carroceria">Carrocería</option>
                                 <option value="frenos">Frenos</option>
@@ -123,16 +130,16 @@
                             </select>
                         </div>
                         <div>
-                            <label for="nombreProducto">Nombre</label>
-                            <input type="text" placeholder="Nombre Producto" id="nombreProducto">
+                            <label for="productName">Nombre</label>
+                            <input type="text" placeholder="Nombre Producto" id="productName">
                         </div>
                         <div>
-                            <label for="modeloProducto">Modelo</label>
-                            <input type="number" placeholder="Modelo" id="modeloProducto" value="2022">
+                            <label for="productModel">Modelo</label>
+                            <input type="number" placeholder="Modelo" id="productModel" value="2022">
                         </div>
                         <div>
-                            <label for="colorProducto">Color</label>
-                            <select name="Color" id="colorProducto">
+                            <label for="productColor">Color</label>
+                            <select name="Color" id="productColor">
                                 <option disabled selected="">Selecione un color</option>
                                 <option value="blanco">Blanco</option>
                                 <option value="negro">Negro</option>
@@ -144,26 +151,30 @@
                             </select>
                         </div>
                         <div>
-                            <label for="precioProducto">Precio</label>
-                            <input type="number" placeholder="Precio" id="precioProducto">
+                            <label for="productPrice">Precio</label>
+                            <input type="number" placeholder="Precio" id="productPrice">
                         </div>
                         <div>
-                            <label for="cantidadProducto">Cantidad</label>
-                            <input type="number" placeholder="Modelo" id="cantidadProducto" value="20">
+                            <label for="productAmount">Cantidad</label>
+                            <input type="number" placeholder="Modelo" id="productAmount" value="20">
                         </div>
                         <div>
-                            <label for="ImgProducto">Imagen del Producto</label>
-                            <input type="file" accept="image" id="imagenProducto" class="fila">
+                            <label for="productImage">Imagen del Producto</label>
+                            <input type="file" accept="image" id="productImage" class="row">
                         </div>
-                        <div class="fila">
-                            <button id="btncreaProducto" type="submit">Guardar Producto</button>
+                        <div class="row">
+                            <button id="productCreator__btn" type="submit">Guardar Producto</button>
                         </div>
                     </form>
             </fieldset>
-            <div id="ListaProdCreados"></div>
+            <div id="newProducts">
+
+            </div>
         </section>
     </div>
     <script src="./js/sidebar.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/productGenerator.js"></script>
+    <script src="./js/userInterface.js"></script>
+    <script src="./js/execution.js"></script>
 </body>
 </html>
